@@ -25,14 +25,13 @@ class doppler_runner(threading.Thread):
     threading.Thread.__init__(self)
 
     self.callback = callback
-    self.gpredict_host = gpredict_host
+    self.gpredict_host = gpredict_host[1:-1]
     self.gpredict_port = gpredict_port
     self.freq = freq
 
 
   def run(self):
-    #bind_to = (self.gpredict_host, self.gpredict_port)
-    bind_to = ('127.0.0.1', 4532)
+    bind_to = (self.gpredict_host, self.gpredict_port)
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     print(bind_to)
     server.bind(bind_to)
